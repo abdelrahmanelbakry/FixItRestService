@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mysema.querydsl:querydsl-spatial:3.6.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mysema.querydsl/querydsl-spatial/3.6.3/8da5602c73dc827870217b89f5c310447e96ea03/querydsl-spatial-3.6.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mysema.querydsl/querydsl-spatial/3.6.3/f6c080a39b56dcef83e0fbd2076004d0c732d956/querydsl-spatial-3.6.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,11 +1,17 @@
 package fixit.model;
 
+
+//@Entity
 public class Location
 {
-    public final double longtitude;
-    public final double latitude;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public final long id;
+    public final long longtitude;
+    public final long latitude;
 
-    public Location(double longtitude, double latitude) {
+    public Location(long id, long longtitude, long latitude) {
+        this.id = id;
         this.longtitude = longtitude;
         this.latitude = latitude;
     }

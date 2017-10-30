@@ -17,6 +17,11 @@ jar {
     version =  '0.1.0'
 }
 
+idea {
+    module {
+        sourceDirs += file('generated/')
+    }
+}
 repositories {
     mavenCentral()
 }
@@ -26,5 +31,13 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile "com.mysema.querydsl:querydsl-jpa:3.6.3"
+    compile "com.mysema.querydsl:querydsl-sql:3.6.3"
+    compile "com.mysema.querydsl:querydsl-apt:3.6.3:jpa"
+    compile "postgresql:postgresql:9.1-901-1.jdbc4"
+    compile "com.mysema.querydsl:querydsl-sql-codegen:3.6.3"
+    compile group: 'net.postgis', name: 'postgis-jdbc', version: '2.1.7.2'
+    compile "com.mysema.querydsl:querydsl-spatial:3.6.3"
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

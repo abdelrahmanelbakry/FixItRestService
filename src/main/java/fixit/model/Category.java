@@ -1,11 +1,17 @@
 package fixit.model;
 
+
+
+//@Entity
+
 public class Category
 {
-    public final long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public final int id;
     public final String name;
 
-    public Category(long id, String name)
+    public Category(int id, String name)
     {
         this.id = id;
         this.name = name;

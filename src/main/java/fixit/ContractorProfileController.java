@@ -14,9 +14,30 @@ public class ContractorProfileController
 {
     List<ContractorProfile> contractorProfiles = new ArrayList<>();
 
-    @RequestMapping("/contractorProfiles")
-    public List<ContractorProfile> getContractorProfiles(@RequestParam(value="categoryId") int categoryId)
+    @RequestMapping("/contractorProfilesByCategory")
+    public List<ContractorProfile> getContractorProfilesByCategory(@RequestParam(value="categoryId") int categoryId)
     {
         return contractorProfiles;
+    }
+
+    @RequestMapping("/contractorProfilesByLocation")
+    public List<ContractorProfile> getContractorProfilesByLocation(@RequestParam(value ="longtitude") long longtitude,
+                                                                   @RequestParam(value ="lattitude") long lattitude)
+    {
+        return contractorProfiles;
+    }
+
+    @RequestMapping("/contractorProfilesByLocationAndCategory")
+    public List<ContractorProfile> getContractorProfilesByLocationAndCategory(@RequestParam(value="categoryId") int categoryId,
+                                                                   @RequestParam(value ="longtitude") long longtitude,
+                                                                   @RequestParam(value ="lattitude") long lattitude)
+    {
+        return contractorProfiles;
+    }
+
+    @RequestMapping("/contractorProfile")
+    public ContractorProfile getContractorProfileById(@RequestParam(value="profileId") int profileId)
+    {
+        return new ContractorProfile(1,1,1,2, 1, null,null,1);
     }
 }

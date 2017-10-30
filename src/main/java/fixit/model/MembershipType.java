@@ -1,6 +1,6 @@
 package fixit.model;
 
-public enum Membershiptype {
+public enum MembershipType {
     standard,
     premium
 }
