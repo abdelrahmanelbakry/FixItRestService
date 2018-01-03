@@ -1,4 +1,4 @@
-package fixit.dataloaders;
+package fixit.dataloaders.api;
 
 
 import java.sql.Connection;

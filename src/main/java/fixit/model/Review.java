@@ -16,6 +16,7 @@ public class Review
     public final Timestamp createdDate;
     public final Timestamp lastModifiedDate;
     public final boolean isDeleted;
+    public final int profileId;
 
     public Review(int id,
                   double score,
@@ -24,7 +25,8 @@ public class Review
                   int customerId,
                   Timestamp createdDate,
                   Timestamp lastModifiedDate,
-                  boolean isDeleted)
+                  boolean isDeleted,
+                  int profileId)
     {
         this.id = id;
         this.score = score;
@@ -34,5 +36,6 @@ public class Review
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
         this.isDeleted = isDeleted;
+        this.profileId = profileId;
     }
 }

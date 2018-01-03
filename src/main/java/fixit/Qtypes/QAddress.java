@@ -2,6 +2,7 @@ package fixit.Qtypes;
 
 import static com.mysema.query.types.PathMetadataFactory.*;
 
+import com.mysema.query.spatial.path.GeometryPath;
 import com.mysema.query.types.path.*;
 
 import com.mysema.query.types.PathMetadata;
@@ -9,6 +10,8 @@ import javax.annotation.Generated;
 import com.mysema.query.types.Path;
 
 import com.mysema.query.sql.ColumnMetadata;
+import org.geolatte.geom.Geometry;
+
 import java.sql.Types;
 
 
@@ -30,7 +33,7 @@ public class QAddress extends com.mysema.query.sql.RelationalPathBase<QAddress> 
 
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
-    public final SimplePath<Object> location = createSimple("location", Object.class);
+    public final GeometryPath<Geometry> location = new GeometryPath<Geometry>("location");
 
     public final StringPath state = createString("state");
 

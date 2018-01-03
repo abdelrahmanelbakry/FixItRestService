@@ -1,4 +1,6 @@
-package fixit.dataloaders;
+package fixit.dataloaders.impls;
+
+import fixit.dataloaders.api.IConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

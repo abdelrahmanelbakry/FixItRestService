@@ -1,7 +1,7 @@
-package fixit.dataloaders;
+package fixit.dataloaders.impls;
 
+import com.mysema.query.sql.dml.SQLUpdateClause;
 import com.mysema.query.support.Expressions;
-import com.vividsolutions.jts.operation.distance.GeometryLocation;
 import fixit.Qtypes.QAddress;
 import fixit.Qtypes.QContractorprofile;
 import com.mysema.query.sql.HSQLDBTemplates;
@@ -9,13 +9,12 @@ import com.mysema.query.sql.SQLQuery;
 import com.mysema.query.sql.SQLTemplates;
 import com.mysema.query.types.FactoryExpression;
 import com.mysema.query.types.Projections;
-import fixit.Qtypes.QGeographyColumns;
+import fixit.dataloaders.api.IConnectionProvider;
+import fixit.dataloaders.api.IContractorProfileLoader;
 import fixit.model.ContractorProfile;
-import org.geolatte.geom.GeometryType;
-import org.postgis.Geometry;
-import org.postgis.Point;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,10 +37,6 @@ public class ContractorProfileLoader implements IContractorProfileLoader {
         return profileList;
     }
 
-    //SELECT * FROM(
-//    SELECT *,(((acos(sin((@latitude*pi()/180)) * sin((Latitude*pi()/180))+cos((@latitude*pi()/180)) * cos((Latitude*pi()/180))
-//          * cos(((@longitude - Longitude)*pi()/180))))*180/pi())*60*1.1515*1.609344) as distance FROM Distances) t
-//    WHERE distance <= @distance
     @Override
     public List<ContractorProfile> getContractorProfilesByLocation(IConnectionProvider connectionProvider, long longtitude,
                                                                    long lattitude, int radius) {
@@ -98,6 +93,30 @@ public class ContractorProfileLoader implements IContractorProfileLoader {
             e.printStackTrace();
         }
         return contractorProfile;
+    }
+
+    @Override
+    public void addContractorProfile(IConnectionProvider connectionProvider, int categoryId, double hourlyRate, double overallScore, int customerId, Timestamp creationDate) {
+
+    }
+
+    @Override
+    public void editContractorProfile(IConnectionProvider connectionProvider, int profileId, int categoryId, double hourlyRate, double overallScore, Timestamp modificationDate) {
+
+    }
+
+    @Override
+    public void deleteContractorProfile(IConnectionProvider connectionProvider, int profileId) {
+//        try {
+//            SQLTemplates dialect = new HSQLDBTemplates();
+//            new SQLUpdateClause(connectionProvider.getConnection(), dialect, contractorProfiletb)
+//                    .set(contractorProfiletb.isdeleted, true)
+//                    .where(contractorProfiletb.id.eq(profileId))
+//                    .execute();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+        return;
     }
 
     private FactoryExpression<ContractorProfile> mapContractorProfile() {
