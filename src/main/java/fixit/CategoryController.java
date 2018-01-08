@@ -5,6 +5,7 @@ import fixit.dataloaders.api.ICategoryLoader;
 import fixit.dataloaders.impls.PostgresConnectionProvider;
 import fixit.model.Category;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -17,7 +18,9 @@ public class CategoryController
     private static final List<Category> categories = new ArrayList<>();
     private ICategoryLoader categoryLoader = new CategoryLoader();
 
-    @RequestMapping("/category")
+    @RequestMapping(value = "/category"
+    , method = RequestMethod.GET,
+    produces = "application/json")
     public List<Category> getCategories() {
         //categoryLoader.getCategories(new PostgresConnectionProvider());
         categories.add(new Category(1,"Plumping"));
