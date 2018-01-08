@@ -15,7 +15,8 @@ import java.util.List;
 @RestController
 public class CategoryController
 {
-    private static final List<Category> categories = new ArrayList<>();
+    private static final List<Category> categories = Arrays.asList(new Category(1,"Plumping"),
+            new Category(2,"Mechanic"));
     private ICategoryLoader categoryLoader = new CategoryLoader();
 
     @RequestMapping(value = "/category"
@@ -23,8 +24,6 @@ public class CategoryController
     produces = "application/json")
     public List<Category> getCategories() {
         //categoryLoader.getCategories(new PostgresConnectionProvider());
-        categories.add(new Category(1,"Plumping"));
-        categories.add(new Category(2,"Mechanic"));
         return categories;
     }
 }
