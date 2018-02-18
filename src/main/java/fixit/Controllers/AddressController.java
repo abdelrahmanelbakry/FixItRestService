@@ -27,28 +27,17 @@ public class AddressController {
     private void loadMockAddress()
     {
         addresses.add(new Address(1, "McFayden Street", "Torbay", "NL",
-                "CA", "A1K1C2",
-                GeometryFactory.createPointFromInternalCoord(new Coordinate(40,40,0),null),
-                1, false));
+                "CA", "A1K1C2", 40,40, 1, false));
         addresses.add(new Address(2, "McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2",
-                GeometryFactory.createPointFromInternalCoord(new Coordinate(40,40,0),null),
-                1, false));
+                40,40, 1, false));
         addresses.add(new Address(3, "McFayden Street", "Torbay", "NL",
-                "CA", "A1K1C2",
-                GeometryFactory.createPointFromInternalCoord(new Coordinate(40,40,0),null),
-                1, false));
+                "CA", "A1K1C2", 40,40, 1, false));
         addresses.add(new Address(4, "McFayden Street", "Torbay", "NL",
-                "CA", "A1K1C2",
-                GeometryFactory.createPointFromInternalCoord(new Coordinate(40,40,0),null),
-                1, false));
+                "CA", "A1K1C2", 40,40, 1, false));
         addresses.add(new Address(5, "McFayden Street", "Torbay", "NL",
-                "CA", "A1K1C2",
-                GeometryFactory.createPointFromInternalCoord(new Coordinate(40,40,0),null),
-                1, false));
+                "CA", "A1K1C2", 40,40, 1, false));
         addresses.add(new Address(6, "McFayden Street", "Torbay", "NL",
-                "CA", "A1K1C2",
-                GeometryFactory.createPointFromInternalCoord(new Coordinate(40,40,0),null),
-                1, false));
+                "CA", "A1K1C2", 40,40, 1, false));
     }
 }

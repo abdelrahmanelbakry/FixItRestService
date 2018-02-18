@@ -1,15 +1,13 @@
 package fixit.model;
 
-
-import com.vividsolutions.jts.geom.Geometry;
-
 //@Entity
 public class Address {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public final int id;
     public final String zipCode;
-    public final Geometry location;
+    public final long longtiitude;
+    public final long lattiitude;
     public final String city;
     public final String state;
     public final String country;
@@ -23,17 +21,19 @@ public class Address {
                    String state,
                    String country,
                    String zipCode,
-                   Geometry location,
+                   long longtiitude,
+                   long lattiitude,
                    int profileId,
                    boolean isDeleted)
     {
         this.id = id;
         this.zipCode = zipCode;
-        this.location = location;
         this.city = city;
         this.state = state;
         this.country = country;
         this.streetAddress = streetAddress;
+        this.longtiitude = longtiitude;
+        this.lattiitude = lattiitude;
         this.profileId = profileId;
         this.isDeleted = isDeleted;
     }
