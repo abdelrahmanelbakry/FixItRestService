@@ -17,9 +17,7 @@ public class CategoryController
             new Category(2,"Mechanic"));
     private ICategoryLoader categoryLoader = new CategoryLoader();
 
-    @RequestMapping(value = "/category"
-    , method = RequestMethod.GET,
-    produces = "application/json")
+    @RequestMapping(value = "/category", method = RequestMethod.GET, produces = "application/json")
     public List<Category> getCategories() {
         //categoryLoader.getCategories(new PostgresConnectionProvider());
         return categories;
