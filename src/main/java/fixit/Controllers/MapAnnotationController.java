@@ -19,9 +19,9 @@ public class MapAnnotationController {
     private IMapAnnotationLoader mapAnnotationLoader = new MapAnnotationLoader();
 
     @RequestMapping("/profilesByCategoryAndLocation")
-    public List<MapAnnotation> getAddressByProfileId(@RequestParam(value="categoryId") int profileId,
-                                               @RequestParam(value="long") long longtitude,
-                                               @RequestParam(value="lat") long latitude)
+    public List<MapAnnotation> getAnnotationsByCategoryAndLocation(@RequestParam(value="categoryId") int profileId,
+                                                                   @RequestParam(value="long") long longtitude,
+                                                                   @RequestParam(value="lat") long latitude)
     {
        /// return addressLoader.getAddress(new PostgresConnectionProvider(),profileId);
         loadMockAnnotations();
