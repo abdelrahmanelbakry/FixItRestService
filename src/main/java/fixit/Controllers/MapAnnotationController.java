@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class MapAnnotationController {
@@ -18,14 +19,15 @@ public class MapAnnotationController {
     List<MapAnnotation> annotations = new ArrayList<>();
     private IMapAnnotationLoader mapAnnotationLoader = new MapAnnotationLoader();
 
-    @RequestMapping("/profilesByCategoryAndLocation")
-    public List<MapAnnotation> getAnnotationsByCategoryAndLocation(@RequestParam(value="categoryId") int profileId,
+    @RequestMapping("/annotationsByCategoryAndLocation")
+    public List<MapAnnotation> getAnnotationsByCategoryAndLocation(@RequestParam(value="categoryid") int categoryId,
                                                                    @RequestParam(value="long") long longtitude,
                                                                    @RequestParam(value="lat") long latitude)
     {
        /// return addressLoader.getAddress(new PostgresConnectionProvider(),profileId);
         loadMockAnnotations();
-        return annotations;
+        return annotations.stream().filter(annotation -> annotation.categoryId == categoryId)
+                .collect(Collectors.toList());
     }
 
     private void loadMockAnnotations()
@@ -34,7 +36,7 @@ public class MapAnnotationController {
                 new ContactInfo(1, "FixIt1","690-6594","","", PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 40,40, 1, false)));
-        annotations.add(new MapAnnotation(1, 1, 10, 3,
+        annotations.add(new MapAnnotation(1, 2, 10, 3,
                 new ContactInfo(1, "FixIt2","690-6594","","", PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 40,40, 1, false)));
@@ -42,11 +44,11 @@ public class MapAnnotationController {
                 new ContactInfo(1, "FixIt3","690-6594","","", PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 40,40, 1, false)));
-        annotations.add(new MapAnnotation(1, 1, 10, 3,
+        annotations.add(new MapAnnotation(1, 2, 10, 3,
                 new ContactInfo(1, "FixIt4","690-6594","","", PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 40,40, 1, false)));
-        annotations.add(new MapAnnotation(1, 1, 10, 3,
+        annotations.add(new MapAnnotation(1, 2, 10, 3,
                 new ContactInfo(1, "FixIt5","690-6594","","", PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 40,40, 1, false)));
