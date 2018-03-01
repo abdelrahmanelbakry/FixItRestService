@@ -12,17 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ContractorProfileController
 {
-    List<ContractorProfile> contractorProfiles = new ArrayList<>();
+    List<ContractorProfile> contractorProfiles;// = new ArrayList<>();
     private IContractorProfileLoader contractorProfileLoader = new ContractorProfileLoader();
 
     @RequestMapping("/contractorProfilesByCategory")
     public List<ContractorProfile> getContractorProfilesByCategory(@RequestParam(value="categoryId") int categoryId)
     {
-        return contractorProfileLoader.getContractorProfilesByCategory(new PostgresConnectionProvider(),categoryId);
+        contractorProfiles = new ArrayList<>();
+        loadMockPofile();
+        return contractorProfiles;
+        //return contractorProfileLoader.getContractorProfilesByCategory(new PostgresConnectionProvider(),categoryId);
     }
 
     @RequestMapping("/contractorProfilesByLocation")
@@ -47,7 +51,13 @@ public class ContractorProfileController
     @RequestMapping("/contractorProfile")
     public ContractorProfile getContractorProfileById(@RequestParam(value="profileId") int profileId)
     {
-        return contractorProfileLoader.getContractorProfileById(new PostgresConnectionProvider(), profileId);
+        contractorProfiles = new ArrayList<>();
+        loadMockPofile();
+        List<ContractorProfile> profiles = contractorProfiles.stream()
+                .filter(profile -> profile.id == profileId)
+                .collect(Collectors.toList());
+        return profiles.get(0);
+        // return contractorProfileLoader.getContractorProfileById(new PostgresConnectionProvider(), profileId);
     }
 
     private void loadMockPofile()

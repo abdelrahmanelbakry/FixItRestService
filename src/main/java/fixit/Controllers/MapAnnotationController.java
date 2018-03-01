@@ -3,7 +3,6 @@ package fixit.Controllers;
 import com.google.common.collect.ImmutableList;
 import fixit.dataloaders.api.IMapAnnotationLoader;
 import fixit.dataloaders.impls.MapAnnotationLoader;
-import fixit.dataloaders.impls.PostgresConnectionProvider;
 import fixit.model.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 @RestController
 public class MapAnnotationController {
 
-    List<MapAnnotation> annotations = new ArrayList<>();
+    List<MapAnnotation> annotations;// = new ArrayList<>();
     private IMapAnnotationLoader mapAnnotationLoader = new MapAnnotationLoader();
 
     @RequestMapping("/annotationsByCategoryAndLocation")
@@ -24,6 +23,7 @@ public class MapAnnotationController {
                                                                    @RequestParam(value="long") long longtitude,
                                                                    @RequestParam(value="lat") long latitude)
     {
+        annotations = new ArrayList<>();
        /// return addressLoader.getAddress(new PostgresConnectionProvider(),profileId);
         loadMockAnnotations();
         return annotations.stream().filter(annotation -> annotation.categoryId == categoryId)
