@@ -12,11 +12,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-public class AddressController {
+public class AddressController
+{
     List<Address> addresses ;//= new ArrayList<>();
     private IAddressLoader addressLoader = new AddressLoader();
 
-    @RequestMapping("/contractorProfilesByCategory")
+    @RequestMapping("/getAddressByProfileId")
     public List<Address> getAddressByProfileId(@RequestParam(value="profileId") int profileId)
     {
         addresses = new ArrayList<>();
