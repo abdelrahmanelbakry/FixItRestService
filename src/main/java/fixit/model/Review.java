@@ -10,6 +10,7 @@ public class Review
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public final int id;
     public final double score;
+    public final String title;
     public final String comment;
     public final boolean recommended;
     public final int customerId;
@@ -20,6 +21,7 @@ public class Review
 
     public Review(int id,
                   double score,
+                  String title,
                   String comment,
                   boolean recommended,
                   int customerId,
@@ -30,6 +32,7 @@ public class Review
     {
         this.id = id;
         this.score = score;
+        this.title = title;
         this.comment = comment;
         this.recommended = recommended;
         this.customerId = customerId;
