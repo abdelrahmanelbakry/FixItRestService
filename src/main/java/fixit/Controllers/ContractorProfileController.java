@@ -60,18 +60,31 @@ public class ContractorProfileController
         // return contractorProfileLoader.getContractorProfileById(new PostgresConnectionProvider(), profileId);
     }
 
+    @RequestMapping("/canLogin")
+    public Boolean canLogin(@RequestParam(value="username") String username,
+                            @RequestParam(value="password") String password)
+    {
+        contractorProfiles = new ArrayList<>();
+        loadMockPofile();
+        List<ContractorProfile> profiles = contractorProfiles.stream()
+                .filter(profile -> profile.username == username && profile.password == password)
+                .collect(Collectors.toList());
+        return profiles.size() > 0;
+        // return contractorProfileLoader.getContractorProfileById(new PostgresConnectionProvider(), profileId);
+    }
+
     private void loadMockPofile()
     {
         contractorProfiles.add(new ContractorProfile(1, 1, 10, 4, 1,
-                ImmutableList.of(), MembershipType.standard, 1, false));
+                ImmutableList.of(), MembershipType.standard, 1, "ama727", "123456", false));
         contractorProfiles.add(new ContractorProfile(2, 1, 20, 1, 2,
-                ImmutableList.of(), MembershipType.standard, 2, false));
+                ImmutableList.of(), MembershipType.standard, 2, "ama727", "123456", false));
         contractorProfiles.add(new ContractorProfile(3, 1, 30, 5, 3,
-                ImmutableList.of(), MembershipType.standard, 3, false));
+                ImmutableList.of(), MembershipType.standard, 3, "ama727", "123456", false));
         contractorProfiles.add(new ContractorProfile(4, 2, 40, 2, 4,
-                ImmutableList.of(), MembershipType.standard, 4, false));
+                ImmutableList.of(), MembershipType.standard, 4, "ama727", "123456", false));
         contractorProfiles.add(new ContractorProfile(5, 2, 10, 0, 5,
-                ImmutableList.of(), MembershipType.premium, 5, false));
+                ImmutableList.of(), MembershipType.premium, 5, "ama727", "123456", false));
     }
 
 }

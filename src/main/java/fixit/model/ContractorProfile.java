@@ -17,6 +17,8 @@ public class ContractorProfile
     public final List<Long> reviewsId;
     public final MembershipType memberType; //Standard, Premium or whatever
     public final int addressId;
+    public final String username;
+    public final String password;
     public final boolean isDeleted;
 
     public ContractorProfile(int id,
@@ -27,6 +29,8 @@ public class ContractorProfile
                              List<Long> reviewsIds,
                              MembershipType memberType,
                              int addressId,
+                             String username,
+                             String password,
                              boolean isDeleted)
     {
         this.id = id;
@@ -37,6 +41,8 @@ public class ContractorProfile
         this.reviewsId = reviewsIds;
         this.memberType = memberType;
         this.addressId = addressId;
+        this.username = username;
+        this.password = password;
         this.isDeleted = isDeleted;
     }
 }
