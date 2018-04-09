@@ -6,8 +6,8 @@ public class Address {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public final int id;
     public final String zipCode;
-    public final long longtitude;
-    public final long lattitude;
+    public final double longtitude;
+    public final double lattitude;
     public final String city;
     public final String state;
     public final String country;
@@ -21,8 +21,8 @@ public class Address {
                    String state,
                    String country,
                    String zipCode,
-                   long longtitude,
-                   long lattitude,
+                   double longtitude,
+                   double lattitude,
                    int profileId,
                    boolean isDeleted)
     {
