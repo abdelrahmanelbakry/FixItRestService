@@ -67,7 +67,7 @@ public class ContractorProfileController
         contractorProfiles = new ArrayList<>();
         loadMockPofile();
         List<ContractorProfile> profiles = contractorProfiles.stream()
-                .filter(profile -> profile.username == username && profile.password == password)
+                .filter(profile -> profile.username.equalsIgnoreCase( username) && profile.password.equals(password))
                 .collect(Collectors.toList());
         return profiles.size() > 0;
         // return contractorProfileLoader.getContractorProfileById(new PostgresConnectionProvider(), profileId);
