@@ -4,7 +4,9 @@ import com.google.common.collect.ImmutableList;
 import fixit.dataloaders.impls.ContractorProfileLoader;
 import fixit.dataloaders.api.IContractorProfileLoader;
 import fixit.dataloaders.impls.PostgresConnectionProvider;
+import fixit.model.Address;
 import fixit.model.ContractorProfile;
+import fixit.model.ContractorsVw;
 import fixit.model.MembershipType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +20,18 @@ import java.util.stream.Collectors;
 public class ContractorProfileController
 {
     List<ContractorProfile> contractorProfiles;// = new ArrayList<>();
+    List<ContractorsVw> contractorsVws;
     private IContractorProfileLoader contractorProfileLoader = new ContractorProfileLoader();
+
+    @RequestMapping("/getListOfContractorsBySubCategoryId")
+    public List<ContractorsVw> getContractorsBySubCategoryId(@RequestParam(value="subCategoryId") int subCategoryId)
+    {
+        contractorsVws = loadMockContractors();
+        return contractorsVws.stream()
+                .filter(contractorsVw -> !contractorsVw.isDeleted &&
+                                         contractorsVw.subCategoryId == subCategoryId)
+                .collect(Collectors.toList());
+    }
 
     @RequestMapping("/contractorProfilesByCategory")
     public List<ContractorProfile> getContractorProfilesByCategory(@RequestParam(value="categoryId") int categoryId)
@@ -85,6 +98,24 @@ public class ContractorProfileController
                 ImmutableList.of(), MembershipType.standard, 4, "ama727", "123456", false));
         contractorProfiles.add(new ContractorProfile(5, 2, 10, 0, 5,
                 ImmutableList.of(), MembershipType.premium, 5, "ama727", "123456", false));
+    }
+
+    private List<ContractorsVw> loadMockContractors()
+    {
+        List<ContractorsVw> contractorsVws = new ArrayList<>();
+        contractorsVws.add(new ContractorsVw(1, 1, 10.0, 3, MembershipType.standard,
+                new Address(1, "2 Bells Turn", "St. Johns", "NL", "CA",
+                        "A11DF2",100, 100,1,false),
+                "fix it 1", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing"));
+        contractorsVws.add(new ContractorsVw(2, 1, 100.0, 5, MembershipType.standard,
+                new Address(1, "4 Bells Turn", "St. Johns", "NL", "CA",
+                        "A11DF2",100, 100,1,false),
+                "fix it 2", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing"));
+        contractorsVws.add(new ContractorsVw(2, 2, 100.0, 5, MembershipType.standard,
+                new Address(1, "4 Bells Turn", "St. Johns", "NL", "CA",
+                        "A11DF2",100, 100,1,false),
+                "fix it 2", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing"));
+        return contractorsVws;
     }
 
 }

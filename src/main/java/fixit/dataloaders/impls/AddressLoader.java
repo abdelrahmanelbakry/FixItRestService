@@ -32,7 +32,8 @@ public class AddressLoader implements IAddressLoader
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return addresses;    }
+        return addresses;
+    }
 
 
     @Override

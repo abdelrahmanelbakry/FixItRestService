@@ -19,9 +19,7 @@ public class MapAnnotationController {
     private IMapAnnotationLoader mapAnnotationLoader = new MapAnnotationLoader();
 
     @RequestMapping("/annotationsByCategoryAndLocation")
-    public List<MapAnnotation> getAnnotationsByCategoryAndLocation(@RequestParam(value="categoryid") int categoryId,
-                                                                   @RequestParam(value="long") double longtitude,
-                                                                   @RequestParam(value="lat") double latitude)
+    public List<MapAnnotation> getAnnotationsByCategoryAndLocation(@RequestParam(value="categoryid") int categoryId)
     {
         annotations = new ArrayList<>();
        /// return addressLoader.getAddress(new PostgresConnectionProvider(),profileId);

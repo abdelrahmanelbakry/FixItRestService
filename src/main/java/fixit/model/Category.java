@@ -10,11 +10,13 @@ public class Category
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public final int id;
     public final String name;
+    public final String iconURL;
 
-    public Category(int id, String name)
+    public Category(int id, String name, String iconURL)
     {
         this.id = id;
         this.name = name;
+        this.iconURL = iconURL;
     }
 
 }
