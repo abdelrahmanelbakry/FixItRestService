@@ -30,24 +30,25 @@ public class MapAnnotationController {
 
     private void loadMockAnnotations()
     {
+        String about = "About Service!";
         annotations.add(new MapAnnotation(1, 1, 10, 3,
-                new ContactInfo(1, "FixIt1","690-6594","","", PreferredContactMethod.email),
+                new AboutContractorInfo(1, "FixIt1","690-6594","","", about, PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", -122.406417,60.0, 1, false)));
         annotations.add(new MapAnnotation(1, 2, 10, 3,
-                new ContactInfo(1, "FixIt2","690-6594","","", PreferredContactMethod.email),
+                new AboutContractorInfo(1, "FixIt2","690-6594","","", about, PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 21.282778,-157.829444, 1, false)));
         annotations.add(new MapAnnotation(1, 1, 10, 3,
-                new ContactInfo(1, "FixIt3","690-6594","","", PreferredContactMethod.email),
+                new AboutContractorInfo(1, "FixIt3","690-6594","","", about, PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 21.282778,-157.829444, 1, false)));
         annotations.add(new MapAnnotation(1, 2, 10, 3,
-                new ContactInfo(1, "FixIt4","690-6594","","", PreferredContactMethod.email),
+                new AboutContractorInfo(1, "FixIt4","690-6594","","", about, PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 21.282778,-157.829444, 1, false)));
         annotations.add(new MapAnnotation(1, 2, 10, 3,
-                new ContactInfo(1, "FixIt5","690-6594","","", PreferredContactMethod.email),
+                new AboutContractorInfo(1, "FixIt5","690-6594","","", about, PreferredContactMethod.email),
                 ImmutableList.of(), MembershipType.standard, new Address(1,"McFayden Street", "Torbay", "NL",
                 "CA", "A1K1C2", 21.282778,-157.829444, 1, false)));
     }

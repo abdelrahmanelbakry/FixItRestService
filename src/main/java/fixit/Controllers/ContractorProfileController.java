@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @RestController
 public class ContractorProfileController
 {
-    List<ContractorProfile> contractorProfiles;// = new ArrayList<>();
+    List<ContractorProfile> contractorProfiles;
     List<ContractorsVw> contractorsVws;
     private IContractorProfileLoader contractorProfileLoader = new ContractorProfileLoader();
 
@@ -38,9 +38,24 @@ public class ContractorProfileController
     {
         contractorProfiles = new ArrayList<>();
         loadMockPofile();
-        return contractorProfiles;
-        //return contractorProfileLoader.getContractorProfilesByCategory(new PostgresConnectionProvider(),categoryId);
+        return contractorProfiles.stream()
+                .filter(contractorsVw -> !contractorsVw.isDeleted &&
+                        contractorsVw.categoryId == categoryId)
+                .collect(Collectors.toList());
     }
+
+    @RequestMapping("/contractorProfilesByCategoryAndSubCategoryId")
+    public List<ContractorsVw> getContractorProfilesByCategoryAndSubCategoryId(@RequestParam(value="categoryId") int categoryId,
+                                                                               @RequestParam(value="subCategoryId") int subCategoryId)
+    {
+        contractorsVws = loadMockContractors();
+        return contractorsVws.stream()
+                .filter(contractorsVw -> !contractorsVw.isDeleted &&
+                        contractorsVw.categoryId == categoryId &&
+                        contractorsVw.subCategoryId == subCategoryId)
+                .collect(Collectors.toList());
+    }
+
 
     @RequestMapping("/contractorProfilesByLocation")
     public List<ContractorProfile> getContractorProfilesByLocation(@RequestParam(value ="longtitude") long longtitude,
@@ -70,7 +85,6 @@ public class ContractorProfileController
                 .filter(profile -> profile.id == profileId)
                 .collect(Collectors.toList());
         return profiles.get(0);
-        // return contractorProfileLoader.getContractorProfileById(new PostgresConnectionProvider(), profileId);
     }
 
     @RequestMapping("/canLogin")
@@ -83,7 +97,6 @@ public class ContractorProfileController
                 .filter(profile -> profile.username.equalsIgnoreCase( username) && profile.password.equals(password))
                 .collect(Collectors.toList());
         return profiles.size() > 0;
-        // return contractorProfileLoader.getContractorProfileById(new PostgresConnectionProvider(), profileId);
     }
 
     private void loadMockPofile()
@@ -106,15 +119,15 @@ public class ContractorProfileController
         contractorsVws.add(new ContractorsVw(1, 1, 10.0, 3, MembershipType.standard,
                 new Address(1, "2 Bells Turn", "St. Johns", "NL", "CA",
                         "A11DF2",100, 100,1,false),
-                "fix it 1", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing"));
+                "fix it 1", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing", 1));
         contractorsVws.add(new ContractorsVw(2, 1, 100.0, 5, MembershipType.standard,
                 new Address(1, "4 Bells Turn", "St. Johns", "NL", "CA",
                         "A11DF2",100, 100,1,false),
-                "fix it 2", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing"));
-        contractorsVws.add(new ContractorsVw(2, 2, 100.0, 5, MembershipType.standard,
+                "fix it 2", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing", 1));
+        contractorsVws.add(new ContractorsVw(3, 2, 100.0, 5, MembershipType.standard,
                 new Address(1, "4 Bells Turn", "St. Johns", "NL", "CA",
                         "A11DF2",100, 100,1,false),
-                "fix it 2", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing"));
+                "fix it 2", false, "https://drive.google.com/file/d/1YcPiCFp90WupAj9GzmhOHTog4i16n6C8/view?usp=sharing", 2));
         return contractorsVws;
     }
 

@@ -8,7 +8,7 @@ public class MapAnnotation {
     public final int categoryId;
     public final double hourlyRate;
     public final double overallScore;
-    public final ContactInfo contactInfo;
+    public final AboutContractorInfo aboutContractorInfo;
     public final List<Review> reviewSnippet;
     public final MembershipType memberType; //Standard, Premium or whatever
     public final Address address;
@@ -17,7 +17,7 @@ public class MapAnnotation {
                          int categoryId,
                          double hourlyRate,
                          double overallScore,
-                         ContactInfo contactInfo,
+                         AboutContractorInfo aboutContractorInfo,
                          List<Review> reviewSnippet,
                          MembershipType memberType,
                          Address address)
@@ -26,7 +26,7 @@ public class MapAnnotation {
         this.categoryId = categoryId;
         this.hourlyRate = hourlyRate;
         this.overallScore = overallScore;
-        this.contactInfo = contactInfo;
+        this.aboutContractorInfo = aboutContractorInfo;
         this.reviewSnippet = reviewSnippet;
         this.memberType = memberType;
         this.address = address;

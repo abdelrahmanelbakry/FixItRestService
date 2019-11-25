@@ -4,6 +4,7 @@ public class ContractorsVw
 {
 
     public final int id;
+    public final int categoryId;
     public final int subCategoryId;
     public final double hourlyRate;
     public final double overallScore;
@@ -21,7 +22,8 @@ public class ContractorsVw
                          Address address,
                          String username,
                          boolean isDeleted,
-                         String imageURL)
+                         String imageURL,
+                         int categoryId)
     {
         this.id = id;
         this.subCategoryId = subCategoryId;
@@ -32,5 +34,6 @@ public class ContractorsVw
         this.username = username;
         this.isDeleted = isDeleted;
         this.imageURL = imageURL;
+        this.categoryId = categoryId;
     }
 }
